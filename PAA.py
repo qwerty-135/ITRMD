@@ -20,14 +20,14 @@ for i in range(0,38):
    x1 = np.linspace(1, 28479, num=28479)
    x2 = np.linspace(1, 475, num=475)
 
-   n_timestamps = len(X)  # 时间戳长度就是有多少个数字
+   n_timestamps = len(X)
    window_size = 60
-   transformer = PiecewiseAggregateApproximation(window_size=window_size)  # 实例化
+   transformer = PiecewiseAggregateApproximation(window_size=window_size)
    X_transform = transformer.transform(X.reshape(1, -1))  # 转换
    list.append(X_transform[0])
    plt.plot(x1,X,label='Original')
    plt.plot(np.arange(window_size // 2,n_timestamps + window_size // 2,window_size),X_transform[0],'o--',label='PAA')
-   plt.legend(loc='best', fontsize=10) #loc='best'自动寻找最好的位置
+   plt.legend(loc='best', fontsize=10)
    plt.xlabel('Time (min)', fontsize=16)
    plt.ylabel('KPI Value', fontsize=16)
    plt.savefig('savefig_example.png')

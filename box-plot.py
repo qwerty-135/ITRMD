@@ -20,12 +20,12 @@ def read_pickle(work_path):
 
 start = time.time()
 list1 = []
-listz = [4, 7, 16, 17, 36, 37]  # variaance = 0
+listz = [4, 7, 16, 17, 36, 37]  # variance = 0
 boxes3 = read_pickle("data_test.pkl")
 boxes3 = np.squeeze(np.array(boxes3))
 for j in range(len(boxes3[0, :])):
     qlist = []
-    te = boxes3[:, j]  # 保存基本统计量
+    te = boxes3[:, j]
     maximum = max(te)
     minimum = min(te)
     ystd = np.std(te)
@@ -49,18 +49,18 @@ for j in range(len(boxes3[0, :])):
         list1.append(temp)
 
 end = time.time()
-print("程序process_1的运行时间为：{}".format(end - start))
+
 ystd = np.std(list1)
 ymean = np.mean(list1)
 threshold1 = ymean - 3 * ystd
 threshold2 = ymean + 3 * ystd
 
-QL = np.quantile(list1, 0.25, interpolation='lower')  # 下四分位数
-QU = np.quantile(list1, 0.75, interpolation='higher')  # 上四分位数
+QL = np.quantile(list1, 0.25, interpolation='lower')
+QU = np.quantile(list1, 0.75, interpolation='higher')
 R = maximum - minimum
 IQR = QU - QL
-threshold1 = QL - 1.5 * (IQR)  # 下阈值
-threshold2 = QU + 1.5 * (IQR)  # 上阈值
+threshold1 = QL - 1.5 * (IQR)
+threshold2 = QU + 1.5 * (IQR)
 
 x1 = np.linspace(0, 37, num=38)
 x2 = np.linspace(1, 38, num=38)

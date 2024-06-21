@@ -24,7 +24,7 @@ boxes3 = read_pickle("data_test.pkl")
 boxes3 = np.squeeze(np.array(boxes3))
 for j in range(len(boxes3[0, :])):
     qlist = []
-    te = boxes3[:, j]  # 保存基本统计量
+    te = boxes3[:, j]
     maximum = max(te)
     minimum = min(te)
 
@@ -40,7 +40,7 @@ for j in range(len(boxes3[0, :])):
     plt.tick_params(labelsize=12)
     plt.plot(x, te)
     plt.axhline(y=threshold2, c="r", ls="--", lw=2)
-    outlier = []  # 将异常值保存
+    outlier = []
     outlier_x = []
 
     for i in range(0, len(te)):

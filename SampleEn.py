@@ -13,14 +13,14 @@ def FuzzyEn(s, r=0.2, m=2, n=2):
 
 
 def SampleEntropy(Datalist, r=0.2, m=2):
-    th = r * np.std(Datalist)  # 容限阈值
+    th = r * np.std(Datalist)
     return EH.SampEn(Datalist, m, r=th)[0][-1]
 
 
 warnings.filterwarnings("ignore")
 box = np.load("x_test.npy")
 fs = 1000
-# 采样点数
+
 num_fft = 28479;
 list = []
 
